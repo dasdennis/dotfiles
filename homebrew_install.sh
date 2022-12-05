@@ -15,13 +15,7 @@ brew install coreutils findutils
 brew install bash git hub shellcheck
 
 # Install proggy langs
-brew install go elixir node crystal-lang
-
-# Install data stuff
-brew install redis memcached sqlite
-
-# osp stuff
-brew install ansible linode-cli
+brew install go node
 
 # Install more recent versions of some OS X tools
 brew tap homebrew/dupes
@@ -29,14 +23,14 @@ brew install homebrew/dupes/grep homebrew/dupes/rsync homebrew/dupes/nano
 brew install homebrew/dupes/whois homebrew/dupes/unzip homebrew/dupes/less homebrew/dupes/gzip
 brew install homebrew/dupes/awk homebrew/dupes/bzip2 homebrew/dupes/diffstat homebrew/dupes/diffutils homebrew/dupes/screen
 
-brew install gpg2 gnupg gnupg2 curl wget tmux wrk ssh-copy-id speedtest_cli youtube-dl p7zip htop-osx asciidoc
-# media lib to fix apple buffoonery
-brew install libdvdcss
+brew install jq sshuttle curl wget tmux wrk ssh-copy-id speedtest_cli youtube-dl p7zip asciidoc libdvdcss
+
+# media
+brew install youtube-dl p7zip asciidoc libdvdcss
 
 # infra
 brew install linode/cli/linode-cli
-brew install ansible
-
+#brew install awscli
 
 brew tap neovim/neovim
 brew install --HEAD neovim
