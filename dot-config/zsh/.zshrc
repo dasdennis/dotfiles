@@ -2,7 +2,7 @@
 [[ $- != *i* ]] && return
 
 # Runtime manager — MUST be early, before compinit
-eval "$(mise activate zsh)"
+eval "$($HOME/.local/bin/mise activate zsh)"
 eval "$(starship init zsh)"
 
 # environment & paths
