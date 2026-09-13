@@ -22,8 +22,7 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 
-# hypr: inactive reference package, never symlinked
-^/dot-config/hypr
-^/dot-config/foot
-^/dot-config/alacritty
-^/dot-config/kitty
+^/dot-config/hypr(/|$)
+^/dot-config/foot(/|$)
+^/dot-config/alacritty(/|$)
+^/dot-config/kitty(/|$)
