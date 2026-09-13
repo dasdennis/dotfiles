@@ -1,0 +1,47 @@
+[tools]
+gh = "latest"
+# node = "26.7.0"
+ruby = "latest"
+python = "3.14"
+codex = "0.154.0"
+
+# [tools."npm:opencode-ai"]
+# version = "1.18.14"
+# allowed_scripts = ["opencode-ai"]
+
+[settings]
+# Performance optimizations for ThinkPad
+jobs = 8                     # Parallel installs (i7-1365U has 12 threads)
+asdf_compat = true           # asdf compatibility
+raw = false                  # Keep output clean unless debugging
+experimental = true          # Enable new providers
+verbose = false              # Keep output clean unless debugging
+http_timeout = '60s'         # Conservative for large binaries
+always_keep_download = false # Save SSD space
+always_keep_install = false  # Save SSD space
+# Trust our project directories (idempotent)
+trusted_config_paths = ['~/work', '~/src', '~/dev']
+idiomatic_version_file_enable_tools = ["ruby"]
+
+[settings.ruby]
+compile = false
+
+[settings.upgrade]
+auto_prune = false
+
+[env]
+EDITOR = "nvim"
+KUBE_EDITOR = "nvim"
+RUBYOPT = '-W:no-deprecated' # Suppress Ruby 3.x deprecation warnings
+SHELL = '/usr/bin/zsh'
+
+[tasks]
+# Common development tasks (run with `mise run <task>`)
+[tasks.update]
+description = 'Update all language toolchains'
+run = [
+  'mise upgrade',
+  'gem update --system',
+  'pip install --upgrade pip',
+  'npm update -g',
+]
