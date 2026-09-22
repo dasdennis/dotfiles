@@ -2,8 +2,10 @@
 [[ $- != *i* ]] && return
 
 # Runtime manager — MUST be early, before compinit
-eval "$($HOME/.local/bin/mise activate zsh)"
+#eval "$($HOME/.local/bin/mise activate zsh)"
+eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
+eval "$(atuin init zsh)"
 
 # environment & paths
 export EDITOR="nvim"
@@ -60,9 +62,9 @@ if command -v bat >/dev/null 2>&1; then
   alias cat='bat --style=plain'
 fi
 
-if command -v rg >/dev/null 2>&1; then
-  alias grep='rg'
-fi
+#if command -v rg >/dev/null 2>&1; then
+#  alias grep='rg'
+#fi
 
 if command -v fd >/dev/null 2>&1; then
   alias find='fd'
@@ -95,7 +97,7 @@ fi
 # utility aliases
 alias cls="clear"
 alias dfh="df -h"
-alias duh="du -sh * 2>/dev/null | sort -h"
+alias duh="/usr/bin/du -sh * 2>/dev/null | sort -h"
 alias ports="lsof -i -P -n | grep LISTEN"
 alias zshconfig="nvim ~/.config/zsh/zshrc"
 

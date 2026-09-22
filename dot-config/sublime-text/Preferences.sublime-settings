@@ -9,7 +9,7 @@
 
   // --- Typography ---
   "font_face": "JetBrainsMono Nerd Font",
-  "font_size": 12,
+  "font_size": 11,
   "font_options": [
     "subpixel_antialias"
   ],
@@ -46,5 +46,5 @@
   // --- Packages ---
   "ignored_packages": [
     "Vintage"
-  ]
+  ],
 }
