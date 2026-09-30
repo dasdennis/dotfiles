@@ -18,10 +18,11 @@ hl.config({
   decoration = {
     -- Use round window corners.
     rounding = 6,
+    rounding_power = 2.0,
 
     -- The 0.05 gap is what marks the focused window.
-    active_opacity = 0.90,
-    inactive_opacity = 0.85,
+    active_opacity = 1,
+    inactive_opacity = 0.95,
 
     -- Translucency without blur makes text unreadable over these wallpapers.
     blur = {
@@ -32,7 +33,7 @@ hl.config({
 
     shadow = {
       enabled = true,
-      range = 20,
+      range = 16,
       render_power = 4,
       color = "rgba(0c162699)",
       color_inactive = "rgba(0c162666)",
@@ -40,7 +41,7 @@ hl.config({
 
     -- Dim unfocused windows (0.0 = no dim, 1.0 = fully dimmed).
     dim_inactive = true,
-    dim_strength = 0.15,
+    dim_strength = 0.35,
   },
 })
 

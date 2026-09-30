@@ -2,8 +2,8 @@
 #node = "26.7.0"
 ruby = "latest"
 python = "3.14"
-codex = "0.154.0"
-gh = "2.101.0"
+gh = "latest"
+atuin = "18.23.0"
 
 # [tools."npm:opencode-ai"]
 # version = "1.18.14"
@@ -43,5 +43,5 @@ run = [
   'mise upgrade',
   'gem update --system',
   'pip install --upgrade pip',
-  'npm update -g',
+  # 'npm update -g',
 ]
