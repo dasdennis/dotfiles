@@ -1,9 +1,7 @@
 [tools]
-#node = "26.7.0"
-ruby = "latest"
-python = "3.14"
 gh = "latest"
-atuin = "18.23.0"
+atuin = "latest"
+ruby = "4.0.7"
 
 # [tools."npm:opencode-ai"]
 # version = "1.18.14"
@@ -42,6 +40,6 @@ description = 'Update all language toolchains'
 run = [
   'mise upgrade',
   'gem update --system',
-  'pip install --upgrade pip',
+  # 'pip install --upgrade pip',
   # 'npm update -g',
 ]
