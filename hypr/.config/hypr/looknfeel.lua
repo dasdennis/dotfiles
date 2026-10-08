@@ -22,12 +22,12 @@ hl.config({
 
     -- The 0.05 gap is what marks the focused window.
     active_opacity = 1,
-    inactive_opacity = 0.95,
+    inactive_opacity = 0.98,
 
     -- Translucency without blur makes text unreadable over these wallpapers.
     blur = {
       enabled = true,
-      size = 4,
+      size = 10,
       passes = 1,
     },
 
@@ -41,17 +41,17 @@ hl.config({
 
     -- Dim unfocused windows (0.0 = no dim, 1.0 = fully dimmed).
     dim_inactive = true,
-    dim_strength = 0.35,
+    dim_strength = 0.20,
   },
 })
 
 -- https://wiki.hypr.land/Configuring/Basics/Variables/#animations
--- hl.config({
---   animations = {
---     -- Disable all animations.
---     enabled = false,
---   },
--- })
+hl.config({
+  animations = {
+    -- Disable all animations.
+    enabled = true,
+  },
+})
 
 -- https://wiki.hypr.land/Configuring/Basics/Variables/#layout
 -- hl.config({
