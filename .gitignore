@@ -2,13 +2,12 @@
 .DS_Store
 Thumbs.db
 
-# Editor/backup noise
+# Editor / temporary files
 *.swp
 *.swo
 *~
 *.bak
 
-# Local secrets/overrides — never commit
-.env
-.env.local
+# Local configuration / secrets
+.env*
 *.local
