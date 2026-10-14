@@ -50,7 +50,7 @@ alias ports="lsof -i -P -n | grep LISTEN"
 
 if command -v duf >/dev/null 2>&1; then
   alias df='duf'
-fifa
+fi
 
 # Optional CLI enhancements
 if command -v eza >/dev/null 2>&1; then
