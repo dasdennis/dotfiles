@@ -1,6 +1,5 @@
 [tools]
 gh = "latest"
-atuin = "latest"
 ruby = "4.0.7"
 
 # [tools."npm:opencode-ai"]
