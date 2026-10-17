@@ -1,0 +1,136 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "auto",
+        "padding": {
+            "top": 2,
+            "right": 6
+        }
+    },
+    "modules": [
+        "break",
+        {
+            "type": "custom",
+            "format": "\u001b[90m┌──────────────────────Hardware──────────────────────┐"
+        },
+        {
+            "type": "host",
+            "key": " PC",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "cpu",
+            "key": "│ ├",
+            "temp": true,
+            "keyColor": "cyan"
+        },
+        {
+            "type": "gpu",
+            "key": "│ ├",
+            "detectionMethod": "sysctl",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "display",
+            "key": "│ ├󱄄",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "disk",
+            "key": "│ ├󰋊",
+            "folders": "/",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "memory",
+            "key": "│ ├",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "battery",
+            "key": "│ ├",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "swap",
+            "key": "└ └󰓡 ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+        },
+        "break",
+        {
+            "type": "custom",
+            "format": "\u001b[90m┌──────────────────────Software──────────────────────┐"
+        },
+        {
+            "type": "os",
+            "key": " OS",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "kernel",
+            "key": "│ ├",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "packages",
+            "key": "│ ├󰏖",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "shell",
+            "key": "└ └",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "de",
+            "key": " DE",
+            "keyColor": "blue"
+        },
+        {
+            "type": "wm",
+            "key": "│ ├",
+            "keyColor": "blue"
+        },
+        {
+            "type": "terminal",
+            "key": "│ ├",
+            "keyColor": "blue"
+        },
+        {
+            "type": "terminalfont",
+            "key": "└ └",
+            "keyColor": "blue"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+        },
+        "break",
+        {
+            "type": "custom",
+            "format": "\u001b[90m┌────────────────────Uptime / Age────────────────────┐"
+        },
+        {
+            "type": "command",
+            "key": "  System Age",
+            "keyColor": "magenta",
+            // "text": "birth=$(stat -f %B /); current=$(date +%s); echo $(( (current - birth) / 86400 )) days"
+            // "text": "birth_install=$(stat -f %B /var/db/.AppleSetupDone); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); birth_date=$(date -r $birth_install +%Y-%m-%d); echo \"$days_difference days ($birth_date)\""
+            "text": "birth=$(stat -f %B /var/db/.AppleSetupDone); echo \"$(( ($(date +%s) - birth) / 86400 )) days ($(date -r $birth +%Y-%m-%d))\""
+        },
+        {
+            "type": "uptime",
+            "key": "  Uptime    ",
+            "keyColor": "magenta"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+        },
+        "break"
+    ]
+}
