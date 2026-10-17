@@ -1,0 +1,35 @@
+# Window
+window-theme = ghostty
+maximize = true
+
+# Typography
+font-family = "JetBrainsMono Nerd Font"
+font-feature = -calt
+# font-size = 16
+
+# Themes
+theme = Nordfox
+# theme = "Argonaut"
+# theme = "Catppuccin Mocha"
+# theme = Kanagawa Wave
+# theme = Material Design Colors
+# theme = Monokai Classic
+# theme = Monokai Pro
+# theme = Monokai Pro Spectrum
+# theme = Spacegray Bright
+# theme = TokyoNight
+# theme = "TokyoNight Storm"
+# theme = Ubuntu
+
+# Input
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 0.95
+
+# Shell integration
+# command = /usr/local/bin/zsh
+  
+# Resource limits
+scrollback-limit = 5000000
+
+# Machine-local overrides (untracked); silently ignored if missing
+config-file = ?config.local
