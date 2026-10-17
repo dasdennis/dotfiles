@@ -1,0 +1,28 @@
+[tools]
+node = "lts"
+ruby = "3.4.11"
+
+[settings]
+jobs = 2                                # concurrent tool installs, not make jobs
+http_timeout = "90s"
+trusted_config_paths = ["~/code"]
+idiomatic_version_file_enable_tools = ["ruby", "node"]
+
+[env]
+RUBY_YJIT_ENABLE = "1"                  # no-op unless Ruby was built with YJIT (needs rustc)
+
+[tasks.update]
+description = "Upgrade mise-managed tools and RubyGems"
+run = ["mise upgrade", "gem update --system"]
+
+[tasks.gems]
+description = "Install Rails (pinned minor line)"
+run = "gem install rails -v '~> 8.1'"
+
+[tasks.thermal-check]
+description = "Sample die temp, fan, thermal pressure, package power (Intel; needs sudo)"
+run = "sudo powermetrics --samplers smc,thermal,cpu_power -i 2000 -n 15 | grep -Ei 'die temp|fan|pressure|package power|freq'"
+
+# [env]
+# MAKE_OPTS = "-j6"                       # ruby-build parallelism; use -j4 if thermal-check shows throttling
+# RUBY_CONFIGURE_OPTS = "--disable-install-doc"
