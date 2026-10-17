@@ -1,0 +1,64 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$terraform\
+$ruby\
+$python\
+$cmd_duration\
+$line_break\
+$character"""
+
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
+[directory]
+style = "blue"
+fish_style_pwd_dir_length = 1
+read_only = " 󰌾"
+
+[git_status]
+format = "[[($conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+ignore_submodules = true
+conflicted = "="
+untracked = "?"
+modified = "!"
+staged = "+"
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+renamed = "»"
+deleted = "✘"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[cmd_duration]
+min_time = 500
+format = "[$duration]($style) "
+style = "yellow bold"
+
+# No $version: avoids forking `ruby -v` on every prompt; the version is in .ruby-version
+[ruby]
+format = "via [$symbol]($style) "
+symbol = "rb "
+style = "red bold"
+
+[python]
+format = "[$virtualenv]($style) "
+style = "bright-black"
+detect_extensions = []
+detect_files = []
+
+[terraform]
+format = "on [󱁢 $workspace]($style) "
+style = "purple bold"
