@@ -31,14 +31,8 @@
 [user]
 	name = Dennis Silva
 	email = dennis.as@live.com
-	signingkey = /home/denniss/.ssh/id_ed25519.pub
 [gpg]
 	format = ssh
-[credential "https://github.com"]
-	helper =
-	helper = !gh auth git-credential
-[credential "https://gist.github.com"]
-	helper =
-	helper = !gh auth git-credential
-[gpg "ssh"]
-	defaultKeyCommand = ssh-add -L
+[include]
+	path = ~/.config/git/config.os
+	path = ~/.config/git/config.local
