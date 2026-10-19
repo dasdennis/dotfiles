@@ -5,10 +5,11 @@ shopt -s nullglob
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
 readonly ROOT
 readonly TARGET="${DOTFILES_TARGET:-$HOME}"
+readonly STOW_BIN="${STOW:-stow}"
 
 die() { printf 'error: %s\n' "$*" >&2; exit 1; }
 
-command -v stow >/dev/null || die "stow not found in PATH"
+command -v "$STOW_BIN" >/dev/null || die "stow not found (set STOW=/path/to/stow)"
 
 case "${DOTFILES_OS:-$(uname -s)}" in
   Darwin|macos) os=macos ;;
@@ -39,5 +40,5 @@ for layer in common "$os"; do
   done
   (( ${#pkgs[@]} )) || continue
   # One invocation per layer: stow plans all packages first, applies all-or-nothing
-  stow "${stow_flags[@]}" --dir="$ROOT/$layer" "${pkgs[@]}"
+  "$STOW_BIN" "${stow_flags[@]}" --dir="$ROOT/$layer" "${pkgs[@]}"
 done
