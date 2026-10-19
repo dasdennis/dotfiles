@@ -22,8 +22,8 @@ Requires `stow`.
 
 ```bash
 git clone https://github.com/dasdennis/dotfiles.git ~/dotfiles
-~/dotfiles/bin/install --dry-run   # preview
-~/dotfiles/bin/install             # apply common/ + current OS layer
+~/dotfiles/bin/install.sh.sh --dry-run   # preview
+~/dotfiles/bin/install.sh.sh             # apply common/ + current OS layer
 ```
 
 Packages are linked with `--no-folding` (only files become symlinks). The script aborts if both layers provide the same path.

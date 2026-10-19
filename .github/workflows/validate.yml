@@ -1,6 +1,17 @@
 name: validate
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate:
@@ -9,16 +20,44 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Install Dependencies
+      - name: Install dependencies
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: "1"
+          HOMEBREW_NO_INSTALL_CLEANUP: "1"
         run: |
-          if [ "$RUNNER_OS" = macOS ]; then brew install stow shellcheck; else sudo apt-get update -qq && sudo apt-get install -y stow shellcheck; fi
-      - name: Lint Shell Scripts
-        run: shellcheck bin/install
+          if [ "$RUNNER_OS" = macOS ]; then
+            brew install stow shellcheck
+          else
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq stow shellcheck
+          fi
 
-      - name: Stow Dry-Run
-        run: DOTFILES_TARGET="$(mktemp -d)" bin/install --dry-run
+      - name: Lint
+        run: shellcheck bin/*
+
+      - name: Prepare disposable target
+        run: |
+          mkdir -p "$RUNNER_TEMP/home"
+          echo "DOTFILES_TARGET=$RUNNER_TEMP/home" >> "$GITHUB_ENV"
+
+      - name: Dry-run
+        run: bin/install.sh --dry-run
+
+      - name: bash 3.2 compatibility (macOS)
+        if: runner.os == 'macOS'
+        run: /bin/bash bin/install.sh --dry-run
+
+      - name: Apply twice (idempotence)
+        run: |
+          bin/install.sh
+          bin/install.sh
+
+      - name: Assert no dangling symlinks
+        run: |
+          broken="$(find "$DOTFILES_TARGET" -type l ! -exec test -e {} \; -print)"
+          if [ -n "$broken" ]; then printf 'dangling:\n%s\n' "$broken"; exit 1; fi

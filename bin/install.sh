@@ -2,7 +2,8 @@
 set -euo pipefail
 shopt -s nullglob
 
-readonly ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
+readonly ROOT
 readonly TARGET="${DOTFILES_TARGET:-$HOME}"
 
 die() { printf 'error: %s\n' "$*" >&2; exit 1; }
