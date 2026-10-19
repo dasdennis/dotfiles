@@ -1,140 +1,55 @@
-# Dotfiles
+# dotfiles
 
-Personal configuration files managed with [GNU Stow](https://www.gnu.org/software/stow/).
-
-Each top-level directory is a Stow package. Its structure mirrors the target path relative to `$HOME`.
+Personal configuration, managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
 ```text
-dotfiles/
-├── alacritty/
-├── fastfetch/
-├── foot/
-├── ghostty/
-├── git/
-├── hypr/
-├── kitty/
-├── lazygit/
-├── mise/
-├── ruby/
-├── starship/
-├── sublime-text/
-├── tmux/
-└── zsh/
+common/     shared across platforms
+linux/      Linux (Omarchy / Hyprland)
+macos/      macOS (Sequoia, Intel)
+reference/  manual reference, never stowed (VSCode, Sublime Text)
+bin/        install script
 ```
 
-Example:
+Each layer holds one package per tool. A package mirrors its target path relative to `$HOME`:
 
 ```text
-zsh/.zshrc
-git/.config/git/config
-hypr/.config/hypr/hyprmon.lua
+common/git/.config/git/config  ->  ~/.config/git/config
 ```
 
-become:
+## Install
 
-```text
-~/.zshrc
-~/.config/git/config
-~/.config/hypr/hyprmon.lua
-```
-
-No `--dotfiles` is required.
-
-## Restore
-
-Preview all packages:
-
-```bash
-stow -nv */
-```
-
-Apply all packages:
-
-```bash
-stow */
-```
-
-Apply selected packages:
-
-```bash
-stow zsh git tmux mise
-```
-
-Preview a package:
-
-```bash
-stow -nv hypr
-```
-
-## Manage
-
-Remove a package:
-
-```bash
-stow -D hypr
-```
-
-Restow a package:
-
-```bash
-stow -R hypr
-```
-
-Restow everything:
-
-```bash
-stow -R */
-```
-
-## Existing files
-
-Stow does not overwrite conflicting files.
-
-Preview before applying:
-
-```bash
-stow -nv <package>
-```
-
-Back up conflicting configuration files before running Stow.
-
-## Repository workflow
-
-Changes made through Stow-managed symlinks are changes to this repository.
-
-```bash
-git status
-git diff
-git add .
-git commit -m "Update dotfiles"
-```
-
-## New machine
+Requires `stow`.
 
 ```bash
 git clone <repository> ~/dotfiles
+~/dotfiles/bin/install --dry-run   # preview
+~/dotfiles/bin/install             # apply common/ + current OS layer
+```
+
+Packages are linked with `--no-folding` (only files become symlinks). The script aborts if both layers provide the same path.
+
+## Platform overrides
+
+A shared base plus a per-OS fragment, instead of duplicated files:
+
+| Tool    | Mechanism                                                     |
+|---------|---------------------------------------------------------------|
+| git     | `[include]` of `config.os` and an untracked `config.local`    |
+
+Per-machine and secret files (`*.local`) are untracked and live only in `$HOME`.
+
+## Manage
+
+```bash
 cd ~/dotfiles
-stow */
+stow -D -d linux -t "$HOME" hypr   # remove a package
 ```
 
-Applications and packages are installed separately.
+Symlinked files are repo files: review with `git diff` before committing.
 
-## Package convention
+## Conventions
 
-Packages must mirror their destination relative to `$HOME`.
-
-```text
-tool/.config/tool/config
-```
-
-→ `~/.config/tool/config`
-
-```text
-tool/.config/tool/config.local
-```
-
-→ `~/.config/tool/config.local`
-
-Keep one package per independently manageable tool or component.
-
-`sublime-text` is retained as a configuration backup/reference and is not part of the normal restore.
+- One package per independently managed tool.
+- A path must exist in only one layer.
+- Do not run `stow --adopt` on a dirty working tree.
+- Applications are installed separately.

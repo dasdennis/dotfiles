@@ -2,12 +2,18 @@
 .DS_Store
 Thumbs.db
 
-# Editor / temporary files
+# Editor / temporary
 *.swp
 *.swo
 *~
 *.bak
+*.orig
+*.rej
 
-# Local configuration / secrets
-.env*
+# Per-machine config and secrets
 *.local
+.env*
+*.pem
+*.key
+id_*
+.netrc
