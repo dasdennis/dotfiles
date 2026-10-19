@@ -21,7 +21,7 @@ common/git/.config/git/config  ->  ~/.config/git/config
 Requires `stow`.
 
 ```bash
-git clone <repository> ~/dotfiles
+git clone https://github.com/dasdennis/dotfiles.git ~/dotfiles
 ~/dotfiles/bin/install --dry-run   # preview
 ~/dotfiles/bin/install             # apply common/ + current OS layer
 ```
