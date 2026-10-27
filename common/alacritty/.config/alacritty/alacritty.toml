@@ -1,3 +1,5 @@
+[general]
+
 general.import = [ "~/.local/state/omarchy/current/theme/alacritty.toml" ]
 
 [env]

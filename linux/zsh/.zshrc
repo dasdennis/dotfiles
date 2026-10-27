@@ -5,6 +5,11 @@
 typeset -U path PATH
 path=("$HOME/.local/bin" "$HOME/bin" "$HOME/.cargo/bin" $path)
 
+# source /usr/share/cachyos-zsh-config/cachyos-config.zsh
+
+# export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
 # Development tools
 if command -v mise >/dev/null 2>&1; then
   eval "$(mise activate zsh)"
@@ -15,14 +20,21 @@ if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 fi
 
+eval "$(direnv hook zsh)"
+eval "$(zoxide init zsh)"
+
+for c in kubectl helm k9s; do
+  (( $+commands[$c] )) && source <($c completion zsh)
+done
+
 # Completion
 autoload -Uz compinit
 compinit -C
 
 # History
 HISTFILE="$HOME/.zsh_history"
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=50000
+SAVEHIST=50000
 
 setopt APPEND_HISTORY
 setopt SHARE_HISTORY

@@ -1,6 +1,7 @@
 [tools]
 gh = "latest"
-ruby = "4.0.7"
+node = "24.22.1"
+ruby = "4.0.9"
 
 # [tools."npm:opencode-ai"]
 # version = "1.18.14"
@@ -21,7 +22,7 @@ trusted_config_paths = ['~/work', '~/src', '~/dev']
 idiomatic_version_file_enable_tools = ["ruby"]
 
 [settings.ruby]
-compile = false
+compile = true
 
 [settings.upgrade]
 auto_prune = false
