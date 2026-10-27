@@ -17,7 +17,7 @@
 	mnemonicPrefix = true    # More intuitive refs in diff output
 [commit]
 	verbose = true           # Include diff comment in commit message template
-	gpgsign = true
+  # gpgsign = true
 [column]
 	ui = auto                # Output in columns when possible
 [branch]
@@ -31,8 +31,14 @@
 [user]
 	name = Dennis Silva
 	email = dennis.as@live.com
-[gpg]
-	format = ssh
+#[gpg]
+# format = ssh
 [include]
 	path = ~/.config/git/config.os
 	path = ~/.config/git/config.local
+[credential "https://github.com"]
+	helper = 
+	helper = !/home/denniss/.local/share/mise/installs/gh/2.103.3/gh_2.103.3_linux_amd64/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/home/denniss/.local/share/mise/installs/gh/2.103.3/gh_2.103.3_linux_amd64/bin/gh auth git-credential

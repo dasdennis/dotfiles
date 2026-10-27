@@ -1,3 +1,6 @@
+# Dynamic theme colors
+config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"
+
 # Font
 font-family = "JetBrainsMono Nerd Font"
 font-style = Regular
@@ -18,7 +21,7 @@ resize-overlay = never
 gtk-toolbar-style = flat
 
 # Themes
-theme = "TokyoNight"
+# theme = "TokyoNight"
 # theme = "Argonaut"
 # theme = "Catppuccin Mocha"
 # theme = "Kanagawa Wave"

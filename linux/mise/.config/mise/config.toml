@@ -1,7 +1,7 @@
 [tools]
 gh = "latest"
-node = "24.22.1"
-ruby = "4.0.9"
+node = "26.12.0"
+ruby = "3.4"
 
 # [tools."npm:opencode-ai"]
 # version = "1.18.14"
@@ -10,36 +10,28 @@ ruby = "4.0.9"
 [settings]
 # Performance optimizations for ThinkPad
 jobs = 8                     # Parallel installs (i7-1365U has 12 threads)
-asdf_compat = true           # asdf compatibility
+http_timeout = "60s"           # default 30s; larger tarballs on slow links
+minimum_release_age = "7d"
+idiomatic_version_file_enable_tools = ["ruby"]
 raw = false                  # Keep output clean unless debugging
 experimental = true          # Enable new providers
 verbose = false              # Keep output clean unless debugging
-http_timeout = '60s'         # Conservative for large binaries
 always_keep_download = false # Save SSD space
 always_keep_install = false  # Save SSD space
-# Trust our project directories (idempotent)
-trusted_config_paths = ['~/work', '~/src', '~/dev']
-idiomatic_version_file_enable_tools = ["ruby"]
 
 [settings.ruby]
 compile = true
 
-[settings.upgrade]
-auto_prune = false
-
 [env]
 EDITOR = "nvim"
 KUBE_EDITOR = "nvim"
-RUBYOPT = '-W:no-deprecated' # Suppress Ruby 3.x deprecation warnings
-SHELL = '/usr/bin/zsh'
+# Skip ri/rdoc generation: saves build time and disk
+RUBY_CONFIGURE_OPTS = "--disable-install-doc"
 
 [tasks]
 # Common development tasks (run with `mise run <task>`)
-[tasks.update]
-description = 'Update all language toolchains'
+description = "Upgrade toolchains and prune unreferenced versions"
 run = [
-  'mise upgrade',
-  'gem update --system',
-  # 'pip install --upgrade pip',
-  # 'npm update -g',
+  "mise upgrade",
+  "mise prune --yes",
 ]
