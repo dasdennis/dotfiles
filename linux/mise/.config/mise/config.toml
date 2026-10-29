@@ -1,6 +1,6 @@
 [tools]
 gh = "latest"
-node = "26.12.0"
+node = "26"
 ruby = "3.4"
 
 # [tools."npm:opencode-ai"]
@@ -28,7 +28,7 @@ KUBE_EDITOR = "nvim"
 # Skip ri/rdoc generation: saves build time and disk
 RUBY_CONFIGURE_OPTS = "--disable-install-doc"
 
-[tasks]
+[tasks.update]
 # Common development tasks (run with `mise run <task>`)
 description = "Upgrade toolchains and prune unreferenced versions"
 run = [
