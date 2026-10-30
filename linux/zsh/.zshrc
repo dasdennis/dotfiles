@@ -1,7 +1,7 @@
 # Interactive shells only
 [[ -o interactive ]] || return
 
-# ---------------------------------------------------------------- Environment
+# Environment
 typeset -U path PATH fpath
 path=("$HOME/.local/bin" "$HOME/bin" "$HOME/.cargo/bin" $path)
 
@@ -14,7 +14,7 @@ export VISUAL="$EDITOR"
 
 # export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
 
-# - Keymap
+# Keymap
 # zsh selects viins when EDITOR/VISUAL contains "vi" (nvim); force emacs
 bindkey -e
 
@@ -43,7 +43,7 @@ setopt AUTO_CD
 setopt INTERACTIVE_COMMENTS
 setopt NO_BEEP
 
-# --------------------------------------------------- Completion (cached, fpath)
+# Completion (cached, fpath)
 _zsh_cache="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 _comp_dir="$_zsh_cache/completions"
 [[ -d $_comp_dir ]] || mkdir -p -- "$_comp_dir"
@@ -85,7 +85,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' use-cache yes
 zstyle ':completion:*' cache-path "$_zsh_cache/zcompcache"
 
-# ------------------------------------------------ Tooling (after compinit)
+# Tooling (after compinit)
 (( $+commands[mise] ))     && eval "$(mise activate zsh)"
 (( $+commands[direnv] ))   && eval "$(direnv hook zsh)"
 (( $+commands[zoxide] ))   && eval "$(zoxide init zsh --cmd cd)"
@@ -96,7 +96,6 @@ zstyle ':completion:*' cache-path "$_zsh_cache/zcompcache"
 [[ -r /usr/share/fzf/completion.zsh   ]] && source /usr/share/fzf/completion.zsh
 
 #  Aliases
-alias cls='clear'
 alias g='git'
 alias gs='git status -sb'
 alias gl='git log --oneline --graph --decorate -15'
