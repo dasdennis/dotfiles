@@ -1,0 +1,116 @@
+{
+  // VSCode settings for Linux (Arch / Hyprland / Wayland)
+
+  // UI & UX
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'DejaVu Sans Mono', monospace",
+  "editor.fontSize": 14,
+  "editor.fontLigatures": false,
+  "editor.tabSize": 2,
+  "editor.minimap.enabled": false,
+  "editor.wordWrap": "on",
+  "editor.showFoldingControls": "always",
+  "editor.stickyScroll.enabled": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Spinel",
+  "workbench.startupEditor": "none",
+  "workbench.reduceMotion": "on",
+  "workbench.enableExperiments": false,
+  "window.title": "${activeEditorShort}${separator}${rootName}",
+  "window.titleBarStyle": "custom",
+  "explorer.confirmDelete": false,
+  "files.enableTrash": true,
+
+  // Editor behavior
+  "editor.tabCompletion": "on",
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.snippetSuggestions": "top",
+  "editor.detectIndentation": true,
+  "files.autoSave": "onFocusChange",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+  // Completion (required by Ruby LSP)
+  "editor.occurrencesHighlight": "off",
+  "editor.selectionHighlight": false,
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.quickSuggestions": { "other": "on", "comments": "off", "strings": "off" },
+  "editor.quickSuggestionsDelay": 50,
+
+  // File watching / search
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/tmp/**": true,
+    "**/log/**": true,
+    "**/vendor/bundle/**": true,
+    "**/.bundle/**": true,
+    "**/storage/**": true,
+    "**/coverage/**": true,
+    "**/public/assets/**": true,
+    "**/.ruby-lsp/**": true,
+    "**/.local/share/mise/**": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/tmp": true,
+    "**/log": true,
+    "**/vendor/bundle": true,
+    "**/.bundle": true,
+    "**/storage": true,
+    "**/coverage": true,
+    "**/public/assets": true,
+    "**/.ruby-lsp": true
+  },
+  "search.followSymlinks": false,
+
+  // Telemetry
+  "telemetry.telemetryLevel": "off",
+  "telemetry.feedback.enabled": false,
+  "telemetry.editStats.enabled": false,
+  "workbench.settings.enableNaturalLanguageSearch": false,
+  "extensions.ignoreRecommendations": true,
+
+  // Git
+  "git.confirmSync": false,
+  "git.autofetch": false,
+  "git.ignoreMissingGitWarning": true,
+  "git.openRepositoryInParentFolders": "always",
+
+  // Ruby (mise + LSP)
+  "rubyLsp.rubyVersionManager": { "identifier": "mise" },
+  "rubyLsp.formatter": "auto",
+  "rubyLsp.indexing": {
+    "excludedPatterns": [
+      "**/vendor/**", "**/node_modules/**", "**/tmp/**", "**/log/**",
+      "**/storage/**", "**/public/assets/**"
+    ]
+  },
+  "[ruby]": {
+    "editor.defaultFormatter": "Shopify.ruby-lsp",
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+
+  // Integrated terminal
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.profiles.linux": {
+    "zsh": { "path": "/usr/bin/zsh", "args": ["-l"] }
+  },
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font', 'DejaVu Sans Mono', monospace",
+  "terminal.integrated.gpuAcceleration": "auto",
+  "terminal.integrated.scrollback": 5000,
+
+  // AI
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "chat.viewSessions.orientation": "stacked",
+  "editor.multiCursorModifier": "ctrlCmd"
+}
+
